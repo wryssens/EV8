@@ -1,0 +1,12 @@
+      parameter (mx=16,my=16,mz=16,mc=10,mv=mx*my*mz,mq=4*mv,mw=130)
+      parameter (meven=5,modd=5)
+c  Example for a param8.h necessary to compile ev8.
+c  Parameters present:
+c  mx,my,mz : number of points on each side of the box.
+c  mc       : maximum number of extra points for the solution of the Poisson
+c             problem
+c  mv       : total number of points in the box
+c  mq       : total number of degrees of freedom per single particle
+c             wavefunction
+c  mw       : maximum number of single-particle wavefunctions
+              
