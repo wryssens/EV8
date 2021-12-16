@@ -23,14 +23,9 @@ Contained in this repository, you will find
    * **nil8.f**: Auxiliary program to generate starting wavefunctions for EV8.
    * **int8.f**: Auxiliary program to interpolate wavefunctions to different box parameters.
    * **den8.f**:  Auxiliary program to extract the nuclear density to a format that is readable by humans and non-FORTRAN programs. 
-
 * **Examples/**
-	* **Pb208.sh**: example demonstrating the useage of NIL8 and EV8 for the 208Pb for different sizes of the simulation box. Reference outpus of this script are
-		* **Pb208.ev8.Sly4.SmallBox.out**
-		* **Pb208.ev8.Sly4.BigBox.out**
-	* **Zr84.sh**: example demonstrating NIL8 and EV8 for 84Zr, both without and with a constraint on the quadrupole deformation. Reference outpus of this script are
-		* **zr84.out**
-		* **z84.ev8.q200.out**
+	* **Pb208.sh**: example demonstrating the useage of NIL8 and EV8 for the 208Pb for different sizes of the simulation box. Reference outpus of this script are (1) **Pb208.ev8.Sly4.SmallBox.out** and (2) **Pb208.ev8.Sly4.BigBox.out**.
+	* **Zr84.sh**: example demonstrating NIL8 and EV8 for 84Zr, both without and with a constraint on the quadrupole deformation. Reference outpus of this script are (1)  **zr84.out** and (2) **z84.ev8.q200.out**.
 		
 Warning: the example scripts assume the program codes are in the same directory as the scripts. Therefore, before running, either copy the program files from the "Codes" directory to the Examples directory or edit the script files to add the path, "../Codes/".
 
@@ -38,7 +33,10 @@ Warning: the example scripts assume the program codes are in the same directory 
 ---
 We do not provide a Makefile with the code. In order to compile an executable, you should
 1. Create a param8.h datafile containing the numerical parameters of the mesh.
-2. Compile ev8.f with your preferred compiler in the same directory of param8.h.
+2. Compile ev8.f with your preferred compiler in the same directory of param8.h. For example, when using gfortran 
+```
+gfortran-4.4 -O3 -o ev8.exe ev8.f 
+```
 
 Please refer to the paper for more details on the contents of param8.h.
 
@@ -75,7 +73,7 @@ If you use EV8 in research work, please consider citing us.
 > *Solution of the Skyrme-HF+BCS equation on a 3D mesh, II: A new version of the Ev8 code*, Comp. Phys. Comm. 187, 175-194 (2015).
 > [https://doi.org/10.1016/j.cpc.2014.10.001](https://doi.org/10.1016/j.cpc.2014.10.001)
 >
->  W. Ryssens, V. Hellemans, M. Bender and P.-H. Heenen,
+>  W. Ryssens, V. Hellemans, M. Bender and P.-H. Heenen,  
 >  *Erratum: Solution of the Skyrme HF+BCS equation on a 3D mesh II. A new version of the Ev8 code (Computer Physics Communications (2015) 187:2 (175-194))*, Comp. Phys. Comm. 190, 231 (2015).
 > [https://doi.org/10.1016/j.cpc.2015.01.011](https://doi.org/10.1016/j.cpc.2014.10.001)
   
