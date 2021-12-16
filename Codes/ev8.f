@@ -895,7 +895,7 @@ c     .............................................................. test input
 c     ..................... occupation of the orbitals pairing force parameters
       read 103,npair,icut
       
-      icut = 0
+      ! icut = 0 => Bugfix with respect to the first public version!
       ifor = 0 
       mtqp = 0 
       ilqp = 0
