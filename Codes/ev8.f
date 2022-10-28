@@ -7899,15 +7899,33 @@ c..............................................................................
      1     /,' Sum. E   :', ' Etot   =' , f10.3 ,' dE      =',e10.3 , 
      2     /,' Sum. Quad:', ' Qxx    =' , f10.3, ' Qy      =',f10.3,
      3        ' Qz      =',f10.3, 
-     4     /,' Sum. Misc:', ' Sum D2H=',e10.3, ' dFermi N=',e10.3,
-     5       ' dFermi P=', e10.3 )
+     4     /,' Sum. Beta:', ' B20    =' , f10.3, ' B22     =',f10.3,
+     5     /,' Sum. Misc:', ' Sum D2H=',e10.3, ' dFermi N=',e10.3,
+     6       ' dFermi P=', e10.3 )
    94 format (78('-'))
 
 c...................................................change in quadrupole moment
       lq = .true.
-      qxt = 0.0d0
-      qyt = 0.0d0
-      qzt = 0.0d0
+      !qxt = 0.0d0
+      !qyt = 0.0d0
+      !qzt = 0.0d0
+      qxt = 2.0d0*x2p-y2p-z2p + 2.0d0*x2n-y2n-z2n
+      qyt = 2.0d0*y2p-z2p-x2p + 2.0d0*y2n-z2n-x2n
+      qzt = 2.0d0*z2p-x2p-y2p + 2.0d0*z2n-x2n-y2n
+
+      !-------------------------------------------------------------------------
+      ! On-the-fly calculation of beta_20 and beta_22 for better judging
+      ! of convergence.
+      s13 = 1.0d0/3.0d0
+      r   = 1.2d0 * (npn+npp)**s13
+      pi  = 4.0d0*atan2(1.0d0,1.0d0)
+      fac2 = 4.0d0 * pi / (3.0d0*r*r*(npn+npp))
+      q20_temp = fac2 * sqrt(5.0d0 /(16.0d0 * pi)) * qzt
+      q22_temp = 2*x2p + 2*x2n - 2*y2p - 2*y2n
+      q22_temp = fac2*sqrt(15.0d0/(32.0d0 * pi)) * q22_temp
+      ! Now Q20_temp and Q22_temp take the values of Beta_20 and Beta_22 at 
+      ! this point in time
+      !-------------------------------------------------------------------------
       if (cq2.gt.0.0d0) then
         qxt = 2.0d0*x2p-y2p-z2p + 2.0d0*x2n-y2n-z2n
         qyt = 2.0d0*y2p-z2p-x2p + 2.0d0*y2n-z2n-x2n
