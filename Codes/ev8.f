@@ -8061,8 +8061,9 @@ c.......................................................... diagnostic printout
      1                                    ocmnp(2),ocmnm(2),
      2           dqx,dqy,dqz
         else
-          print 93,itert, et, dee, qxt, qyt, qzt, dhmax, 
-     1            abs(ambda(:) - efold(:,2))
+          print 93,itert, et, dee, qxt, qyt, qzt,
+     1             q20_temp, q22_temp, dhmax, 
+     2            abs(ambda(:) - efold(:,2))
           print 94
         endif
       endif
